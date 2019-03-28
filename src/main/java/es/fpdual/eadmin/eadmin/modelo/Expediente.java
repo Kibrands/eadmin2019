@@ -1,5 +1,6 @@
 package es.fpdual.eadmin.eadmin.modelo;
 
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class Expediente extends AdministracionElectronicaBase {
 	}
 
 	public List<Integer> obetenerLongitudNombresDocumentos() {
-		if (documentos.isEmpty()) {
+		if (documentos.size() == 0) {
 			throw new AdministracionElectronicaException("Lista de documentos vacía");
 		}
 
@@ -55,6 +56,6 @@ public class Expediente extends AdministracionElectronicaBase {
 	}
 
 	public Map<TipoDocumento, List<Documento>> obtenerDocumentosPorTipos() {
-		return documentos.stream().collect(Collectors.groupingBy(Documento::getTipoDocumento));
+		return documentos.stream().collect(Collectors.groupingByConcurrent(Documento::getTipoDocumento));
 	}
 }
