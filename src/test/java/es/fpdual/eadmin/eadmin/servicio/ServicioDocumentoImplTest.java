@@ -1,4 +1,4 @@
-package es.fpdual.eadmin.eadmin.servicios;
+package es.fpdual.eadmin.eadmin.servicio;
 
 import org.junit.Before;
 
@@ -14,6 +14,7 @@ import java.util.List;
 
 import es.fpdual.eadmin.eadmin.modelo.Documento;
 import es.fpdual.eadmin.eadmin.repositorio.RepositorioDocumento;
+import es.fpdual.eadmin.eadmin.servicio.ServicioDocumentoImpl;
 
 public class ServicioDocumentoImplTest {
 

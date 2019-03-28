@@ -1,4 +1,4 @@
-package es.fpdual.eadmin.eadmin.servicios;
+package es.fpdual.eadmin.eadmin.servicio;
 
 import java.util.List;
 

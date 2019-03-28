@@ -2,6 +2,7 @@ package es.fpdual.eadmin.eadmin.repositorio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.stereotype.Repository;
@@ -36,29 +37,25 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 	}
 
 	@Override
-	public void eliminarDocumento(int codigoDocumento) {
-		
-		//solucion 1
-		
-		final Documento documentoAEliminar = new Documento(codigoDocumento, null,null, null, null);
+	public void eliminarDocumento(int id) {
+
+		final Documento documentoAEliminar = new Documento(id, null, null, null, null);
 		final int indice = documentos.indexOf(documentoAEliminar);
 		documentos.remove(indice);
-		
-		//solucion 2
 
-					
 	}
 
 	@Override
 	public List<Documento> obtenerTodosDocumentos() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.documentos.stream().collect(Collectors.toList());
 	}
 
 	@Override
 	public int getSiguienteId() {
-		// TODO Auto-generated method stub
-		return 0;
+		if (documentos.isEmpty()) {
+			return 1;
+		}
+		return documentos.get(documentos.size() - 1).getId() + 1;
 	}
 
 }
