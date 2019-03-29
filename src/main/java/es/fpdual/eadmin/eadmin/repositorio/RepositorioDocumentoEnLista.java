@@ -22,6 +22,7 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 			throw new AdministracionElectronicaException("El documento ya existe");
 		}
 		documentos.add(documento);
+		System.out.println("Documento " + documento.getNombre() + " almacenado correctamente");
 
 	}
 
