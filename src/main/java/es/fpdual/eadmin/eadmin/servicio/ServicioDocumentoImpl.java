@@ -21,16 +21,13 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 	@Override
 	public Documento altaDocumento(Documento documento) {
 
-		 repositorioDocumento.altaDocumento(documento);
+		repositorioDocumento.altaDocumento(documento);
 		return null;
 	}
 
 	@Override
 	public void modificarDocumento(Documento documento) {
-		 repositorioDocumento.modificarDocumento(documento);
-		 
-		 
-		 
+		repositorioDocumento.modificarDocumento(documento);
 	}
 
 	@Override
