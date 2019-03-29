@@ -74,12 +74,12 @@ public class RepositorioDocumentoEnListaTest {
 	}
 
 	@Test
-	public void deberiaDevolverSiguienteIdConLaListaVacia() {
+	public void deberiaDevolver1SiLaListaEstaVacia() {
 		assertEquals(1, this.repositorioDocumento.getSiguienteId());
 	}
 
 	@Test
-	public void deberiaDevolverSiguienteId() {
+	public void deberiaDevolverElSiguienteId() {
 		when(documento.getId()).thenReturn(5);
 		this.repositorioDocumento.altaDocumento(documento);
 
