@@ -42,8 +42,10 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 
 		final Documento documentoAEliminar = new Documento(id, null, null, null, null);
 		final int indice = documentos.indexOf(documentoAEliminar);
-		documentos.remove(indice);
-
+		if (indice >= 0) {
+			documentos.remove(indice);
+			System.out.println("Documento con id " + id + " eliminado correctamente");
+		}
 	}
 
 	@Override
