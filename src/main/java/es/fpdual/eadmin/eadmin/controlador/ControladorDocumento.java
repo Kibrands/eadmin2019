@@ -46,4 +46,9 @@ public class ControladorDocumento {
 				documento.getId(), documento.getFechaCreacion());
 		this.servicioDocumento.modificarDocumento(documentoAModificar);
 	}
+
+	@GetMapping("/documentos/{id}")
+	public Documento obtenerDocumentoPorId(@PathVariable("id") int id) {
+		return this.servicioDocumento.obtenerDocumentoPorId(id);
+	}
 }
