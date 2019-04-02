@@ -1,13 +1,9 @@
 package es.fpdual.eadmin.eadmin.controlador;
 
-import java.util.Date;
-
 public class DocumentoRequest {
 	private String tipoDocumento;
-	private int id;
 	private String nombre;
 	private String usuario;
-	private Date fechaCreacion;
 
 	public DocumentoRequest(String nombre, String usuario, String tipoDocumento) {
 		this.nombre = nombre;
@@ -15,12 +11,12 @@ public class DocumentoRequest {
 		this.tipoDocumento = tipoDocumento;
 	}
 
-	public void setTipoDocumento(String tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
+	public DocumentoRequest() {
+
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
 
 	public void setNombre(String nombre) {
@@ -31,16 +27,8 @@ public class DocumentoRequest {
 		this.usuario = usuario;
 	}
 
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
-
 	public String getTipoDocumento() {
 		return tipoDocumento;
-	}
-
-	public int getId() {
-		return id;
 	}
 
 	public String getNombre() {
@@ -51,13 +39,9 @@ public class DocumentoRequest {
 		return usuario;
 	}
 
-	public Date getFechaCreacion() {
-		return fechaCreacion;
-	}
-
 	@Override
 	public String toString() {
-		return "Documento: " + id + " - Nombre: " + nombre;
+		return "Documento: " + nombre;
 	}
 
 }

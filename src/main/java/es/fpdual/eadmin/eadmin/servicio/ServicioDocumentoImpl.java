@@ -1,5 +1,6 @@
 package es.fpdual.eadmin.eadmin.servicio;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,15 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 	@Override
 	public Documento altaDocumento(Documento documento) {
 
-		repositorioDocumento.altaDocumento(documento);
-		return null;
+		final int siguienteId = repositorioDocumento.getSiguienteId();
+		final Date fechaAtual = new Date();
+
+		Documento documentoModificado = new Documento(siguienteId, documento.getNombre(), documento.getUsuario(),
+				fechaAtual, documento.getTipoDocumento());
+
+		repositorioDocumento.altaDocumento(documentoModificado);
+		return documentoModificado;
+
 	}
 
 	@Override
@@ -40,6 +48,11 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 	@Override
 	public List<Documento> obtenerTodosDocumentos() {
 		return repositorioDocumento.obtenerTodosDocumentos();
+	}
+
+	@Override
+	public Documento obtenerDocumentoPorId(int codigoDocumento) {
+		return this.repositorioDocumento.obtenerDocumentoPorId(codigoDocumento);
 	}
 
 }
