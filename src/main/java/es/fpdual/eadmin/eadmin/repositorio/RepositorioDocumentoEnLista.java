@@ -3,10 +3,12 @@ package es.fpdual.eadmin.eadmin.repositorio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
+import es.fpdual.eadmin.eadmin.EadminApplication;
 import es.fpdual.eadmin.eadmin.modelo.AdministracionElectronicaException;
 import es.fpdual.eadmin.eadmin.modelo.Documento;
 
@@ -14,6 +16,7 @@ import es.fpdual.eadmin.eadmin.modelo.Documento;
 public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 
 	private final List<Documento> documentos = new ArrayList<>();
+	private static final Logger logger = LogManager.getLogger(EadminApplication.class);
 
 	@Override
 	public void altaDocumento(Documento documento) {
@@ -22,8 +25,11 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 			throw new AdministracionElectronicaException("El documento ya existe");
 		}
 		documentos.add(documento);
-		System.out.println("Documento " + documento.getNombre() + " almacenado correctamente");
-
+		logger.info("\n**************************************************\n" + "Documento almacenado correctamente\n"
+				+ "Id: " + documento.getId() + "\nNombre: " + documento.getNombre() + "\nUsuario: "
+				+ documento.getUsuario().getNombre() + "\nFecha Creación: " + documento.getFechaCreacion()
+				+ "\nTipo Documento: " + documento.getTipoDocumento()
+				+ "\n**************************************************");
 	}
 
 	@Override
@@ -44,7 +50,7 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 		final int indice = documentos.indexOf(documentoAEliminar);
 		if (indice >= 0) {
 			documentos.remove(indice);
-			System.out.println("Documento con id " + id + " eliminado correctamente");
+			logger.info("Documento con id " + id + " eliminado correctamente");
 		}
 	}
 
