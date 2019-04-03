@@ -25,11 +25,14 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 			throw new AdministracionElectronicaException("El documento ya existe");
 		}
 		documentos.add(documento);
-		logger.info("\n**************************************************\n" + "Documento almacenado correctamente\n"
-				+ "Id: " + documento.getId() + "\nNombre: " + documento.getNombre() + "\nUsuario: "
-				+ documento.getUsuario().getNombre() + "\nFecha Creación: " + documento.getFechaCreacion()
-				+ "\nTipo Documento: " + documento.getTipoDocumento()
-				+ "\n**************************************************");
+		logger.info("**************************************************");
+		logger.info("Documento almacenado correctamente");
+		logger.info("Id: " + documento.getId());
+		logger.info("Nombre: " + documento.getNombre());
+		logger.info("Usuario: " + documento.getUsuario().getNombre());
+		logger.info("Fecha Creación: " + documento.getFechaCreacion());
+		logger.info("Tipo Documento: " + documento.getTipoDocumento());
+		logger.info("**************************************************");
 	}
 
 	@Override
