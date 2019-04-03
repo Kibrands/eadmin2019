@@ -13,7 +13,7 @@ public class DocumentoContable extends Documento {
 			String numeroOperacionContable) {
 		super(id, nombre, usuario, fechaCreacion, TipoDocumento.DOCUMENTO_CONTABLE);
 		this.numeroOperacionContable = numeroOperacionContable;
-		logger.debug("Documento Contable creado");
+		logger.trace("Documento Contable creado");
 	}
 
 	public String getNumeroOperacionContable() {
