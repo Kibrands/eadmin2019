@@ -1,5 +1,9 @@
 package es.fpdual.eadmin.eadmin.repositorio;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,14 +29,39 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 			throw new AdministracionElectronicaException("El documento ya existe");
 		}
 		documentos.add(documento);
-		logger.debug("**************************************************");
-		logger.debug("Documento almacenado correctamente");
-		logger.debug("Id: " + documento.getId());
-		logger.debug("Nombre: " + documento.getNombre());
-		logger.debug("Usuario: " + documento.getUsuario().getNombre());
-		logger.debug("Fecha Creación: " + documento.getFechaCreacion());
-		logger.debug("Tipo Documento: " + documento.getTipoDocumento());
-		logger.debug("**************************************************");
+
+		try {
+			String nombreDocumento = documento.getNombre() + "-" + documento.getTipoDocumento() + ".txt";
+			String ruta = "documentos/" + nombreDocumento;
+			File dir = new File(ruta);
+			if (dir.exists()) {
+				logger.error("Fichero ya existente");
+			} else {
+				logger.debug("Fichero " + nombreDocumento + " no existe, creando fichero...");
+				FileWriter writer = new FileWriter(ruta, true);
+				PrintWriter pw = new PrintWriter(writer);
+
+				pw.println("Id: " + documento.getId());
+				pw.println("Nombre: " + documento.getNombre());
+				pw.println("Fecha Creación: " + documento.getFechaCreacion());
+				pw.println("Tipo Documento: " + documento.getTipoDocumento());
+				pw.println("Usuario: " + documento.getUsuario().getNombre());
+
+				pw.close();
+
+				logger.debug("**************************************************");
+				logger.debug("Documento almacenado correctamente");
+				logger.debug("Id: " + documento.getId());
+				logger.debug("Nombre: " + documento.getNombre());
+				logger.debug("Usuario: " + documento.getUsuario().getNombre());
+				logger.debug("Fecha Creación: " + documento.getFechaCreacion());
+				logger.debug("Tipo Documento: " + documento.getTipoDocumento());
+				logger.debug("**************************************************");
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -59,6 +88,23 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 
 	@Override
 	public List<Documento> obtenerTodosDocumentos() {
+		final String nombre = "ListaDocumentos.txt";
+		try {
+			FileWriter writer = new FileWriter(nombre);
+			PrintWriter pw = new PrintWriter(writer);
+			for (Documento documento : this.documentos) {
+				pw.println("------------------------------------");
+				pw.println("ID: " + documento.getId());
+				pw.println("Nombre: " + documento.getNombre());
+				pw.println("Fecha Creación: " + documento.getFechaCreacion());
+				pw.println("Usuario: " + documento.getUsuario().getNombre());
+				pw.println("Tipo Documento: " + documento.getTipoDocumento());
+				pw.println("------------------------------------");
+			}
+			pw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return this.documentos.stream().collect(Collectors.toList());
 	}
 
