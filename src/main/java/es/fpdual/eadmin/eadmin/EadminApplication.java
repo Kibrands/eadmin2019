@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 @SpringBootApplication
 public class EadminApplication {
+
 	private static final Logger logger1 = LogManager.getLogger(EadminApplication.class);
 
 	public static void main(String[] args) {
@@ -17,6 +18,7 @@ public class EadminApplication {
 		SpringApplication.run(EadminApplication.class, args);
 
 		logger1.info("Finalizando Servicio");
+
 	}
 
 }

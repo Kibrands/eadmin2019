@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import es.fpdual.eadmin.eadmin.EadminApplication;
+import es.fpdual.eadmin.eadmin.excel.Excel;
 import es.fpdual.eadmin.eadmin.modelo.AdministracionElectronicaException;
 import es.fpdual.eadmin.eadmin.modelo.Documento;
 
@@ -57,6 +58,7 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 				logger.debug("Fecha Creación: " + documento.getFechaCreacion());
 				logger.debug("Tipo Documento: " + documento.getTipoDocumento());
 				logger.debug("**************************************************");
+
 			}
 
 		} catch (IOException e) {
@@ -105,6 +107,8 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		Excel.exportarDocumentos(this.documentos.stream().collect(Collectors.toList()));
 		return this.documentos.stream().collect(Collectors.toList());
 	}
 
