@@ -8,9 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
-import org.springframework.util.SocketUtils;
-
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 public class ExpedienteTest {
 	@Test
@@ -56,6 +53,7 @@ public class ExpedienteTest {
 		final DocumentoPadron documentoPadron = new DocumentoPadron(1, "certificado empadronamiento", usuario,
 				new Date(), "SEVILLA");
 		final List<Documento> documentos = new ArrayList<Documento>();
+		@SuppressWarnings("unused")
 		final List<Documento> documentosContables = documentos.stream().filter(this::esDocumentoContable)
 				.collect(Collectors.toList());
 
@@ -107,6 +105,7 @@ public class ExpedienteTest {
 		documentos.add(documentoContable2);
 		documentos.add(documentoPadron);
 
+		@SuppressWarnings("unused")
 		final Expediente expediente = new Expediente(1, "expediente 1", usuario, new Date(),
 				TipoExpediente.EXPEDIENTE_NOMINAS, documentos);
 		

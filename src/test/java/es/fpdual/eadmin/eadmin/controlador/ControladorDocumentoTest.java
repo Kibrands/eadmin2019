@@ -3,7 +3,6 @@ package es.fpdual.eadmin.eadmin.controlador;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.*;
 

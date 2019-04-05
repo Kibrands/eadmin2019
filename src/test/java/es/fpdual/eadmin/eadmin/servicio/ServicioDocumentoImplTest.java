@@ -70,6 +70,7 @@ public class ServicioDocumentoImplTest {
 
 		when(this.repositorioDocumento.getSiguienteId()).thenReturn(22);
 
+		@SuppressWarnings("unused")
 		final Documento resultado = this.servicioDocumento.altaDocumento(documento);
 
 	}
