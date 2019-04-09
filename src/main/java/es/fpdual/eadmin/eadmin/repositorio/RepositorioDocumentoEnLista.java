@@ -13,9 +13,11 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import es.fpdual.eadmin.eadmin.EadminApplication;
+import es.fpdual.eadmin.eadmin.codigoqr.CodigoQR;
 import es.fpdual.eadmin.eadmin.excel.Excel;
 import es.fpdual.eadmin.eadmin.modelo.AdministracionElectronicaException;
 import es.fpdual.eadmin.eadmin.modelo.Documento;
+import es.fpdual.eadmin.eadmin.pdf.CodigoQRPDF;
 import es.fpdual.eadmin.eadmin.pdf.Pdf;
 
 @Repository
@@ -23,6 +25,7 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 
 	private final List<Documento> documentos = new ArrayList<>();
 	private static final Logger logger = LogManager.getLogger(EadminApplication.class);
+	private CodigoQR codigoQR = new CodigoQR();
 
 	@Override
 	public void altaDocumento(Documento documento) {
@@ -59,13 +62,17 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 				logger.debug("Fecha Creación: " + documento.getFechaCreacion());
 				logger.debug("Tipo Documento: " + documento.getTipoDocumento());
 				logger.debug("**************************************************");
-				
+
+				codigoQR.crearCodigoQR(documento);
+				CodigoQRPDF.exportarQRAPdf(documento);
 				Pdf.exportarDocumetoPDF(documento);
 				Pdf.convertirLogPDF();
 
 			}
 
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
