@@ -16,6 +16,7 @@ import es.fpdual.eadmin.eadmin.EadminApplication;
 import es.fpdual.eadmin.eadmin.excel.Excel;
 import es.fpdual.eadmin.eadmin.modelo.AdministracionElectronicaException;
 import es.fpdual.eadmin.eadmin.modelo.Documento;
+import es.fpdual.eadmin.eadmin.pdf.Pdf;
 
 @Repository
 public class RepositorioDocumentoEnLista implements RepositorioDocumento {
@@ -58,6 +59,9 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 				logger.debug("Fecha Creación: " + documento.getFechaCreacion());
 				logger.debug("Tipo Documento: " + documento.getTipoDocumento());
 				logger.debug("**************************************************");
+				
+				Pdf.exportarDocumetoPDF(documento);
+				Pdf.convertirLogPDF();
 
 			}
 
@@ -75,6 +79,8 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 
 		documentos.set(documentos.indexOf(documento), documento);
 
+		Pdf.convertirLogPDF();
+
 	}
 
 	@Override
@@ -85,6 +91,7 @@ public class RepositorioDocumentoEnLista implements RepositorioDocumento {
 		if (indice >= 0) {
 			documentos.remove(indice);
 			logger.info("Documento con id " + id + " eliminado correctamente");
+			Pdf.convertirLogPDF();
 		}
 	}
 

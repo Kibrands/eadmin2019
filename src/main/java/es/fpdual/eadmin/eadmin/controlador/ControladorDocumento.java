@@ -2,6 +2,7 @@ package es.fpdual.eadmin.eadmin.controlador;
 
 import java.util.List;
 
+import org.junit.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.fpdual.eadmin.eadmin.modelo.Documento;
+import es.fpdual.eadmin.eadmin.pdf.Pdf;
 import es.fpdual.eadmin.eadmin.servicio.ServicioDocumento;
 
 @RestController
@@ -37,6 +39,7 @@ public class ControladorDocumento {
 	@DeleteMapping("/documentos/{id}")
 	public void eliminarDocumento(@PathVariable("id") int id) {
 		this.servicioDocumento.eliminarDocumento(id);
+		Pdf.convertirLogPDF();
 	}
 
 	@PutMapping("/documentos/{id}")
@@ -45,6 +48,7 @@ public class ControladorDocumento {
 		final Documento documentoAModificar = DocumentoRequestMapper.toDocumentoCompleto(documentoRequest,
 				documento.getId(), documento.getFechaCreacion());
 		this.servicioDocumento.modificarDocumento(documentoAModificar);
+		Pdf.convertirLogPDF();
 	}
 
 	@GetMapping("/documentos/{id}")
