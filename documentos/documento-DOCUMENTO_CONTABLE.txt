@@ -1,5 +1,0 @@
-Id: 1
-Nombre: documento
-Fecha Creación: Tue Apr 09 13:17:28 CEST 2019
-Tipo Documento: DOCUMENTO_CONTABLE
-Usuario: usuario 65
