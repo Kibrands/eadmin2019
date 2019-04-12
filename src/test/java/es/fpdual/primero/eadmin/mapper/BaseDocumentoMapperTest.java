@@ -54,22 +54,16 @@ public abstract class BaseDocumentoMapperTest {
 	@Test
 	public void deberiaModificarElDocumento() throws Exception {
 		// DECLARACIÓN
-		Documento documentoPrueba = mock(Documento.class);
-		// ENTRENAMIENTO
 		when(usuario.getId()).thenReturn(1);
-		when(documentoPrueba.getId()).thenReturn(1);
-		when(documentoPrueba.getNombre()).thenReturn("DocumentoPrueba");
-		when(documentoPrueba.getUsuario()).thenReturn(usuario);
-		when(documentoPrueba.getFechaCreacion()).thenReturn(LocalDate.now());
-		when(documentoPrueba.getTipoDocumento()).thenReturn(TipoDocumento.DOCUMENTO_PADRON);
-		this.mapper.insertarDocumento(documentoPrueba);
-		when(documentoPrueba.getNombre()).thenReturn("nombre actualizado");
+		Documento modificado = Documento.builder().clone(this.documento).withNombre("Documento de prueba").build();
+		// ENTRENAMIENTO
+		this.mapper.insertarDocumento(this.documento);
 		// PRUEBA
-		Integer resultado = this.mapper.actualizarDocumento(documentoPrueba);
+		Integer resultado = this.mapper.actualizarDocumento(modificado);
 		// COMPROBACION
 		assertThat(resultado, is(1));
 		Documento documentoActualizado = this.mapper.getDocumento(1);
 		assertThat(documentoActualizado, is(notNullValue()));
-		assertThat(documentoActualizado.getNombre(), is("nombre actualizado"));
+		assertThat(documentoActualizado.getNombre(), is("Documento de prueba"));
 	}
 }
