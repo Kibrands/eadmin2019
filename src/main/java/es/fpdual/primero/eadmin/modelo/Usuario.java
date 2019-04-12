@@ -11,6 +11,11 @@ public class Usuario {
 		this.cargo = cargo;
 	}
 
+	@SuppressWarnings("unused")
+	private Usuario(Integer id) { // NOSONAR myBatis
+		this(id, null, null);
+	}
+
 	public int getId() {
 		return id;
 	}

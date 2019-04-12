@@ -6,7 +6,7 @@ public class Documento extends AdministracionElectronicaBase {
 
 	private final TipoDocumento tipoDocumento;
 
-	public Documento(int id, String nombre, Usuario usuario, LocalDate fechaCreacion, TipoDocumento tipoDocumento) {
+	public Documento(Integer id, String nombre, Usuario usuario, LocalDate fechaCreacion, TipoDocumento tipoDocumento) {
 		this.id = id;
 		this.nombre = nombre;
 		this.usuario = usuario;
