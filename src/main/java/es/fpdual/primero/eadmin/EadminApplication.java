@@ -4,8 +4,6 @@ import org.apache.log4j.*;
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
 
-import es.fpdual.primero.eadmin.pdf.*;
-
 /**
  * Aplicación para Administración de documentos. Esta será usada con sentencias
  * Post/Get/etc.
@@ -29,6 +27,6 @@ public class EadminApplication {
 
 		logger1.info("Finalizando Servicio");
 
-		Pdf.convertirLogPDF();
+		// Pdf.convertirLogPDF();
 	}
 }

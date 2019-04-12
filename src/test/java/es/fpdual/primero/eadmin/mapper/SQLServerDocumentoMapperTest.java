@@ -1,12 +1,12 @@
 package es.fpdual.primero.eadmin.mapper;
 
-import es.fpdual.primero.eadmin.modelo.Documento;
+import org.junit.runner.*;
+import org.springframework.test.context.*;
+import org.springframework.test.context.junit4.*;
 
-public class SQLServerDocumentoMapperTest extends BaseDocumentoMapperTest{
-
-	@Override
-	public Integer insertarDocumento(Documento documento) {
-		return null;
-	}
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({ "classpath:spring-configuration/eadmin-sqlserver-persistencia.xml",
+		"classpath:spring-configuration/eadmin-persistencia.xml" })
+public class SQLServerDocumentoMapperTest extends BaseDocumentoMapperTest {
 
 }
