@@ -104,9 +104,5 @@ public class ExpedienteTest {
 		documentos.add(documentoContable2);
 		documentos.add(documentoPadron);
 
-		@SuppressWarnings("unused")
-		final Expediente expediente = new Expediente(1, "expediente 1", usuario, LocalDate.now(),
-				TipoExpediente.EXPEDIENTE_NOMINAS, documentos);
-
 	}
 }

@@ -4,6 +4,10 @@ import java.time.*;
 
 import org.apache.log4j.*;
 
+import lombok.*;
+
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class DocumentoContable extends Documento {
 	private final String numeroOperacionContable;
 	private static final Logger logger = LogManager.getLogger(DocumentoContable.class);
@@ -15,16 +19,4 @@ public class DocumentoContable extends Documento {
 		logger.trace("Documento Contable creado");
 	}
 
-	public String getNumeroOperacionContable() {
-		return numeroOperacionContable;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof DocumentoContable) {
-			final DocumentoContable documentoContable = (DocumentoContable) obj;
-			return documentoContable.getId() == this.getId();
-		}
-		return false;
-	}
 }

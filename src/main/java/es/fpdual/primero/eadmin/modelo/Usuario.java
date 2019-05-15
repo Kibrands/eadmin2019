@@ -1,5 +1,8 @@
 package es.fpdual.primero.eadmin.modelo;
 
+import lombok.*;
+
+@EqualsAndHashCode
 public class Usuario {
 	private final int id;
 	private final String nombre;
@@ -26,20 +29,6 @@ public class Usuario {
 
 	public String getCargo() {
 		return cargo;
-	}
-
-	@Override
-	public int hashCode() {
-		return this.id;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Usuario) {
-			final Usuario usuario = (Usuario) obj;
-			return usuario.getId() == this.id;
-		}
-		return false;
 	}
 
 }

@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.*;
  * Aplicación para Administración de documentos. Esta será usada con sentencias
  * Post/Get/etc.
  * 
- * Librerias externas: poi, poi-ooxml, poi-ooxml-schemas, xmlbeans, apache
- * log4j, commons-collections, commons-compress
+ * Dependencias: poi, poi-ooxml, poi-ooxml-schemas, xmlbeans, apache log4j,
+ * commons-collections, commons-compress
  * 
  * @author Julio de la Matta Cadenas
  *

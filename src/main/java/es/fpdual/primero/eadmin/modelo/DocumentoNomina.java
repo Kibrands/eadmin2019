@@ -4,6 +4,9 @@ import java.time.*;
 
 import org.apache.log4j.*;
 
+import lombok.*;
+
+@EqualsAndHashCode(callSuper = false)
 public class DocumentoNomina extends Documento {
 	private final String dni;
 	private static final Logger logger = LogManager.getLogger(DocumentoNomina.class);
@@ -18,12 +21,4 @@ public class DocumentoNomina extends Documento {
 		return dni;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof DocumentoNomina) {
-			final DocumentoNomina documentoNomina = (DocumentoNomina) obj;
-			return documentoNomina.getId() == this.getId();
-		}
-		return false;
-	}
 }

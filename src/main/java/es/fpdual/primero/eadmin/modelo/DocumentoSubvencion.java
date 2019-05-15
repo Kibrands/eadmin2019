@@ -2,6 +2,11 @@ package es.fpdual.primero.eadmin.modelo;
 
 import java.time.*;
 
+import lombok.*;
+
+@Getter
+@EqualsAndHashCode(callSuper = true)
+@ToString
 public class DocumentoSubvencion extends Documento {
 	private final double importeSubvencion;
 
@@ -11,16 +16,4 @@ public class DocumentoSubvencion extends Documento {
 		this.importeSubvencion = importeSubvencion;
 	}
 
-	public double getImporteSubvencion() {
-		return importeSubvencion;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof DocumentoSubvencion) {
-			final DocumentoSubvencion documentoSubvencion = (DocumentoSubvencion) obj;
-			return documentoSubvencion.getId() == this.getId();
-		}
-		return false;
-	}
 }

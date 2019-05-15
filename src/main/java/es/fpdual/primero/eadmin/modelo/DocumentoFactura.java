@@ -4,6 +4,9 @@ import java.time.*;
 
 import org.apache.log4j.*;
 
+import lombok.*;
+
+@EqualsAndHashCode(callSuper = false)
 public class DocumentoFactura extends Documento {
 	private final double importeFactura;
 	private static final Logger logger = LogManager.getLogger(DocumentoFactura.class);
@@ -19,12 +22,4 @@ public class DocumentoFactura extends Documento {
 		return importeFactura;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof DocumentoFactura) {
-			final DocumentoFactura documentoFactura = (DocumentoFactura) obj;
-			return documentoFactura.getId() == this.getId();
-		}
-		return false;
-	}
 }

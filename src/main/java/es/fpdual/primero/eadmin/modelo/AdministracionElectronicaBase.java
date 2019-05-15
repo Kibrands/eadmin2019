@@ -2,6 +2,9 @@ package es.fpdual.primero.eadmin.modelo;
 
 import java.time.*;
 
+import lombok.*;
+
+@EqualsAndHashCode
 public abstract class AdministracionElectronicaBase {
 	protected int id;
 	protected String nombre;
@@ -24,8 +27,4 @@ public abstract class AdministracionElectronicaBase {
 		return fechaCreacion;
 	}
 
-	@Override
-	public int hashCode() {
-		return this.getId();
-	}
 }
